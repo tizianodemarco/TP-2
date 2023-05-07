@@ -44,7 +44,7 @@ except FileNotFoundError:
 clave = input ('Ingrese la clave de cifrado: ')
 
 salida_archivo = input ('Ingrese la ruta del archivo de salida: ')
-    with open (salida_archivo, 'w') as salida:
-        salida.write(encriptar_vigenere(texto, clave))
+with open (salida_archivo, 'w') as salida:
+    salida.write(encriptar_vigenere(texto, clave))
 
     
