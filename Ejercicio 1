@@ -1,0 +1,50 @@
+def encriptador(path, clave, archivo):
+
+    abecedario = 'abcdefghijklmnopqrstuvwxyz'
+    dicc = {}
+    dicc_inv = {}
+    cont = 0
+
+    for num, letra in enumerate(abecedario):
+        dicc[letra] = num
+        dicc_inv[num] = letra
+
+    with open (archivo, 'w'):
+    
+        for linea in info:
+
+            for caracter in linea:
+                caracter = caracter.lower()
+                
+                if caracter.isalpha:
+                    new = dicc[caracter]+dicc[clave[cont]]
+
+                    if cont == len(clave):
+                        cont = 0
+                    else:
+                        cont +=1
+
+                else:
+                    new = caracter
+
+                archivo.write(dicc_inv[new%26])
+
+
+print('≡≡Encriptador de Cifrado de Vigenère≡≡')
+
+path = input('Ingrese nombre del archivo en texto plano:')
+try:
+    with open (path, 'r') as arch:
+        info = arch.readlines()
+except:
+    print ('...\nNo se pudo abrir el archivo')
+    exit()
+
+clave = input('Ingrese la clave:')
+if not clave.isalpha:
+    print('...\nLa clave solo puede contener letras del alfabeto inglés')
+    exit()
+
+archivo = input('Ingrese nombre del archivo para la encripción:')
+
+encriptador(info, clave, archivo)
