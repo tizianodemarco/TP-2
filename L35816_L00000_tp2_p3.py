@@ -27,16 +27,17 @@ def main():
     plt.show()
     graphic_data_3 = frequency_generator(information)
     print(graphic_data_3)
-    posicion = 2 
-    grupo = 1
+    posicion = 1 
+    grupo = 0
     for dato in graphic_data_3:
+        posicion += 1
+        grupo += 1
         plt.subplot(3, 2, posicion)                                              # A lo de aca lo hice solo para ver como se estaban imprimiendo los graficos
         plt.bar([x for x in dato.keys()], [y for y in dato.values()])
         plt.ylabel('Frecuencia')
-        plt.title('Letra {grupo} de la clave')
-        plt.show()
-        posicion += 1
-        grupo += 1
+        plt.title(f'Letra {grupo} de la clave')
+    plt.show()
+    
         
 def info_collector(data):
     information = ''
