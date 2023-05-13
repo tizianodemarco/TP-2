@@ -20,12 +20,24 @@ def main():
     plt.xlabel("Largo de la clave")
     plt.ylabel("Índice de coincidencia")
     plt.show()
-    graphic_data_2 = frequency_generator(information)
-    print(graphic_data_2)
-    for dato in graphic_data_2:                                              # A lo de aca lo hice solo para ver como se estaban imprimiendo los graficos
+    graphic_data_2 = plt.subplot(3, 2, 1)
+    plt.bar([x for x in ENGLISH_LETTERS_FRECUENCIES.keys()], [y for y in ENGLISH_LETTERS_FRECUENCIES.values()])
+    plt.ylabel('Frecuencia')
+    plt.title('Inglés')
+    plt.show()
+    graphic_data_3 = frequency_generator(information)
+    print(graphic_data_3)
+    posicion = 2 
+    grupo = 1
+    for dato in graphic_data_3:
+        plt.subplot(3, 2, posicion)                                              # A lo de aca lo hice solo para ver como se estaban imprimiendo los graficos
         plt.bar([x for x in dato.keys()], [y for y in dato.values()])
+        plt.ylabel('Frecuencia')
+        plt.title('Letra {grupo} de la clave')
         plt.show()
-
+        posicion += 1
+        grupo += 1
+        
 def info_collector(data):
     information = ''
     for line in data:
