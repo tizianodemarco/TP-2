@@ -20,10 +20,12 @@ def main():
     plt.xlabel("Largo de la clave")
     plt.ylabel("Índice de coincidencia")
     plt.show()
+    
     graphic_data_2 = plt.subplot(3, 2, 1)
     plt.bar([x for x in ENGLISH_LETTERS_FRECUENCIES.keys()], [y for y in ENGLISH_LETTERS_FRECUENCIES.values()])
     plt.ylabel('Frecuencia')
     plt.title('Inglés')
+    
     graphic_data_3 = frequency_generator(information)
     print(graphic_data_3)
     posicion = 1 
@@ -31,7 +33,7 @@ def main():
     for dato in graphic_data_3:
         posicion += 1
         grupo += 1
-        plt.subplot(3, 2, posicion)                                              # A lo de aca lo hice solo para ver como se estaban imprimiendo los graficos
+        plt.subplot(3, 2, posicion)                                              # La posicion del grafico en la figura y el grupo que indica el titulo iteran junto a los datos del diccionario de frecuencias obtenido. 
         plt.bar([x for x in dato.keys()], [y for y in dato.values()])
         plt.ylabel('Frecuencia')
         plt.title(f'Letra {grupo} de la clave')
@@ -40,14 +42,21 @@ def main():
     
         
 def info_collector(data):
+    '''
+    Devuelve los caracteres del archivo que pertenecen al alfabeto ingles en una cadena
+    Argumentos:
+    >> data es una variable que, dado un archivo de texto existente, lee las lineas del archivo.
+    '''
     information = ''
     for line in data:
             for chr in line:
-                if chr in part1.ABC:
+                if chr in part1.ABC:    # Usamos el alfabeto definido en el ejercicio 1.
                     information += chr
     return information
 
-def groups_generator(information):
+def groups_generator(information):              
+    '''
+    '''
     dicc = {}
     for key in range(1,31):
         groups = []
@@ -77,12 +86,12 @@ def get_ioc (group):
 
     ioc_numerator = 0
     for num in dictionary.values():
-        ioc_numerator += (num*(num-1))
+        ioc_numerator += (num*(num-1))              # Sumatoria de la cantidad de veces que aparece una letra
         
-    ioc = ioc_numerator/(len(group)*(len(group)-1))
+    ioc = ioc_numerator/(len(group)*(len(group)-1))         # Formula del IoC
     return ioc 
 
-def frequency_generator(information):                               # ESTA ES LA FUNCION PARA EL DOS, LO DEMAS SON MODULOS PARA LA PARTE 1
+def frequency_generator(information):                               # Esta es la funcion para la parte 2 del ejercicio 3.
     
     groups = []
     for ord in range(len(information[:5])):
