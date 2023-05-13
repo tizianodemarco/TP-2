@@ -24,7 +24,6 @@ def main():
     plt.bar([x for x in ENGLISH_LETTERS_FRECUENCIES.keys()], [y for y in ENGLISH_LETTERS_FRECUENCIES.values()])
     plt.ylabel('Frecuencia')
     plt.title('Inglés')
-    plt.show()
     graphic_data_3 = frequency_generator(information)
     print(graphic_data_3)
     posicion = 1 
