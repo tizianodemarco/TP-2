@@ -38,6 +38,9 @@ def encrypter(data, code, archive:str, desencrypter=False):
             f.write(new_line)
 
 def try_path(prompt:str):
+    '''
+    Verifica que el archivo exista y, en caso de existir, devuelve las lineas del archivo.
+    '''
     path = input(prompt)
     try:
         with open (path, 'r') as arch:        # PROBAR ESTO!  encoding='utf-8'
@@ -48,6 +51,9 @@ def try_path(prompt:str):
         try_path(prompt)
 
 def try_code (prompt: str):
+    ''' 
+    Corrobora que la clave ingresada sea válida (unicamente letras del alfabeto inglés)
+    '''
     code = input(prompt)
     code = code.lower()
     for chr in code:
@@ -57,6 +63,9 @@ def try_code (prompt: str):
     return code
 
 def try_archive (prompt:str):
+    '''
+    Impone las condiciones del nombre del archivo de salida.
+    '''
     archive = input(prompt)
     invalid_chr = '\/:*?"<>|'                
     for chr in archive:
