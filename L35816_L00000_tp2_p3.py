@@ -35,6 +35,7 @@ def main():
         plt.bar([x for x in dato.keys()], [y for y in dato.values()])
         plt.ylabel('Frecuencia')
         plt.title(f'Letra {grupo} de la clave')
+    plt.tight_layout()
     plt.show()
     
         
