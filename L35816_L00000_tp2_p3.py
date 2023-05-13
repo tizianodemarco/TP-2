@@ -21,6 +21,7 @@ def main():
     plt.ylabel("Índice de coincidencia")
     plt.show()
     graphic_data_2 = frequency_generator(information)
+    print(graphic_data_2)
     for dato in graphic_data_2:                                              # A lo de aca lo hice solo para ver como se estaban imprimiendo los graficos
         plt.bar([x for x in dato.keys()], [y for y in dato.values()])
         plt.show()
@@ -70,22 +71,22 @@ def get_ioc (group):
 
 def frequency_generator(information):                               # ESTA ES LA FUNCION PARA EL DOS, LO DEMAS SON MODULOS PARA LA PARTE 1
     
-    letters_frequency = {}
-    all_frequencies = []
-    for letter in part1.ABC:
-        letters_frequency[letter] = 0
-
     groups = []
     for ord in range(len(information[:5])):
         groups.append(information[ord::5])
-
+    
+    all_frequencies = []
     for group in groups:
+        letters_frequency = {}
+
+        for letter in part1.ABC:
+            letters_frequency[letter] = 0
+
         for chr in group:
             letters_frequency[chr] += 1
 
-        for chr, counter in letters_frequency.items():              # Algo esta pasando aca xq no me da los valores que tiene que dar 
+        for chr, counter in letters_frequency.items():            
             letters_frequency[chr] = counter/len(group)
-
         all_frequencies.append(letters_frequency)
 
     return all_frequencies
