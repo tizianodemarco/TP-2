@@ -92,7 +92,7 @@ def get_ioc (group):
 
     ioc_numerator = 0
     for num in dictionary.values():
-        ioc_numerator += (num*(num-1))              # Sumatoria de la cantidad de veces que aparece una letra
+        ioc_numerator += (num*(num-1))              
         
     ioc = ioc_numerator/(len(group)*(len(group)-1))         # Formula del IoC
     return ioc 
