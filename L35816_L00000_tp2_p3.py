@@ -45,7 +45,7 @@ def info_collector(data):
     '''
     Devuelve los caracteres del archivo que pertenecen al alfabeto ingles en una cadena
     Argumentos:
-    >> data es una variable que, dado un archivo de texto existente, lee las lineas del archivo.
+    Data -- variable que, dado un archivo de texto existente, lee las lineas del archivo.
     '''
     information = ''
     for line in data:
@@ -56,6 +56,8 @@ def info_collector(data):
 
 def groups_generator(information):              
     '''
+    Calcula el IoC promedio para una cadena dividida en grupos de letras de distintos tamaños
+    Information -- Cadena de caracteres del alfabeto ingles ibtenida de la funcion info_collector.
     '''
     dicc = {}
     for key in range(1,31):
@@ -75,7 +77,11 @@ def groups_generator(information):
     return dicc
     
 def get_ioc (group):
-    
+    '''
+    Calcula el IoC para un grupo de caracteres de tamaño variable
+    Argumentos:
+    Group--
+    '''
     dictionary = {}
 
     for chr in group:
@@ -92,7 +98,11 @@ def get_ioc (group):
     return ioc 
 
 def frequency_generator(information):                               # Esta es la funcion para la parte 2 del ejercicio 3.
-    
+    '''
+    Devuelve una lista de diccionarios. Cada diccionario contiene las frecuencias de las letras de un grupo de caracteres de la cadena de entrada
+    Argumentos:
+    Information -- Cadena de texto (unicamente caracteres de alfabeto ingles)
+    '''
     groups = []
     for ord in range(len(information[:5])):
         groups.append(information[ord::5])
