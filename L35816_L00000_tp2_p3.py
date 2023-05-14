@@ -13,7 +13,7 @@ def main():
 
     data = part1.try_path('Ingrese nombre del archivo encriptado: ')
     information = info_collector(data)
-    graphic_data = groups_generator(information)
+    graphic_data = groups_generator(information)                                        # Grafico ej 3, parte 1
     plt.bar([x for x in graphic_data.keys()], [y for y in graphic_data.values()])
     plt.axhline(y= 0.0686, color= "k", linestyle= "--")
     plt.axhline(y = 0.0385, color = "k", linestyle= "--")
@@ -21,7 +21,7 @@ def main():
     plt.ylabel("Índice de coincidencia")
     plt.show()
     
-    graphic_data_2 = plt.subplot(3, 2, 1)
+    graphic_data_2 = plt.subplot(3, 2, 1)                                                                           # Grafico ej 3, parte 2
     plt.bar([x for x in ENGLISH_LETTERS_FRECUENCIES.keys()], [y for y in ENGLISH_LETTERS_FRECUENCIES.values()])
     plt.ylabel('Frecuencia')
     plt.title('Inglés')
