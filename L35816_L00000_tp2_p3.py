@@ -27,7 +27,6 @@ def main():
     plt.title('Inglés')
     
     graphic_data_3 = frequency_generator(information)
-    print(graphic_data_3)
     posicion = 1 
     grupo = 0
     for dato in graphic_data_3:
