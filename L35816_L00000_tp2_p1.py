@@ -8,14 +8,21 @@ def main():
     encrypter(data, code, archive)
 
 def encrypter(data, code, archive:str, desencrypter=False):
-
+'''
+Cifra un archivo de entrada utilizando el Cifrado de Vigenère y escribe el texto cifrado en un archivo de salida
+Argumentos:
+Data -- Contenido del archivo de entrada
+Code -- Clave de cifrado (str)
+Archive -- Archivo de salida
+Desencrypter -- Indica si los datos se cifran (false) o descifran (true)
+'''
     dictionary = {}
     inverted_dictionary = {}
     for number, letter in enumerate(ABC):
         dictionary[letter] = number
         inverted_dictionary[number] = letter
 
-    with open (archive, 'w') as f:     # PROBAR ESTO! encoding='utf-8'
+    with open (archive, 'w') as f:     
         counter = 0
         for line in data:
             line = str(line).lower()
@@ -40,10 +47,12 @@ def encrypter(data, code, archive:str, desencrypter=False):
 def try_path(prompt:str):
     '''
     Verifica que el archivo exista y, en caso de existir, devuelve las lineas del archivo.
+    Argumentos:
+    Prompt -- Mensaje de input
     '''
     path = input(prompt)
     try:
-        with open (path, 'r') as arch:        # PROBAR ESTO!  encoding='utf-8'
+        with open (path, 'r') as arch:        
             data = arch.readlines()              
         return data
     except FileNotFoundError:
@@ -53,18 +62,20 @@ def try_path(prompt:str):
 def try_code (prompt: str):
     ''' 
     Corrobora que la clave ingresada sea válida (unicamente letras del alfabeto inglés)
+    Prompt -- Mensaje de input
     '''
     code = input(prompt)
     code = code.lower()
     for chr in code:
         if chr not in ABC:
-            print('...\nLa clave solo puede contener letras del alfabeto inglés')  
+            print('...\nLa clave solo puede contener letras del alfabeto inglés') 
             try_code(prompt)
     return code
 
 def try_archive (prompt:str):
     '''
     Impone las condiciones del nombre del archivo de salida.
+    Prompt -- Mensaje de input
     '''
     archive = input(prompt)
     invalid_chr = '\/:*?"<>|'                
